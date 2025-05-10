@@ -1,1 +1,35 @@
-window.addEventListener("load",()=>{document.body.classList.add("fade-in"),document.body.style.opacity=null}),document.querySelectorAll("a[href]").forEach(e=>{let t=e.getAttribute("target"),l=e.getAttribute("href");!l||l.startsWith("#")||l.startsWith("mailto:")||"_blank"===t||e.addEventListener("click",function(e){e.preventDefault(),document.body.classList.remove("fade-in"),document.body.classList.add("fade-out"),setTimeout(()=>{window.location.href=this.href},500)})}),document.addEventListener("DOMContentLoaded",function(){let e=document.getElementById("modal"),t=document.getElementById("modal-img"),l=document.getElementById("close-btn"),n=document.querySelectorAll(".expandable-image");n.forEach(l=>{l.addEventListener("click",function(){e.style.display="flex",t.src=this.src,t.alt=this.alt})}),l.addEventListener("click",function(){e.style.display="none"}),e.addEventListener("click",function(t){t.target===e&&(e.style.display="none")})});
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modal-img");
+    const closeBtn = document.getElementById("close-btn");
+    const images = document.querySelectorAll(".expandable-image");
+  
+    images.forEach((img) => {
+      img.addEventListener("click", function () {
+        modal.style.display = "flex";
+        modalImg.src = this.src;
+        modalImg.alt = this.alt;
+      });
+    });
+  
+    closeBtn.addEventListener("click", function () {
+      modal.style.display = "none";
+    });
+  
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  });
+
+
+window.addEventListener('pageshow', (event) => {
+  if (event.persisted) {
+    window.location.reload();
+  }
+});
+  
+
+
+  
